@@ -1,7 +1,7 @@
 from pymongo import DESCENDING
 
 from app.models.user import User
-from app.services.db import users
+from app.services.db_service import users
 
 async def login(user: User):
     existing_user = users.find_one({"name": user.name, "password": user.password})
