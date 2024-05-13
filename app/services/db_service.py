@@ -4,4 +4,4 @@ client = MongoClient("mongodb://localhost:27017/")
 
 db = client['FinanceFocus']
 users = db['Users']
-users_budget = db['UsersBudget']
+users_action = db['UsersAction']
