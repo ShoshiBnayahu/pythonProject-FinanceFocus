@@ -12,7 +12,8 @@ async def create_user_action(new_user_action:User_Action):
             "amount": new_user_action.amount,
             "datetime":datetime.now()
         })
-    return User_Action(**new_user_action)
+    return new_user_action
+
 
     # עדכון: אילו שדות?
 async def update_user_action(user_action: User_Action):
@@ -26,7 +27,7 @@ async def update_user_action(user_action: User_Action):
    # מחיקה לא צריכה להיות לפי params
 async def delete_user_action(user_action: User_Action):
     existing_user_action = users_action.delete_one({"id": user_action.id})
-    return User_Action(**existing_user_action)
+    return existing_user_action
 
 
 async def set_id():

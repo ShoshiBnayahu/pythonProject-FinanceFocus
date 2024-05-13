@@ -13,7 +13,7 @@ async def sign_up(new_user:User):
         "name": new_user.name,
         "password": new_user.password
     })
-    return User(**new_user)
+    return new_user
 
 async def update_user_detail(updated_user:User):
     filter = {"id": updated_user.id}
