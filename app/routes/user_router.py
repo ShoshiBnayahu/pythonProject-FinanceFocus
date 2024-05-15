@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from app.services import user_service
 from app.models.user import User
-from pydantic import ValidationError
 
 user_router = APIRouter()
 

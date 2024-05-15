@@ -1,6 +1,7 @@
 from pymongo import DESCENDING
 from app.models.user import User
 from app.services.db_service import users
+from fastapi import HTTPException
 
 async def login(user: User):
     existing_user = users.find_one({"name": user.name, "password": user.password})
@@ -18,7 +19,9 @@ async def sign_up(new_user:User):
 async def update_user_detail(updated_user:User):
     filter = {"id": updated_user.id}
     new_values = {"$set": {"name": updated_user.name, "password": updated_user.password}}
-    users.update_one(filter,new_values)
+    result=users.update_one(filter,new_values)
+    if result.raw_result.get('n') == 0:
+        raise HTTPException(status_code=404, detail="Invalid user_id ")
     return updated_user
 
 async def set_id():
