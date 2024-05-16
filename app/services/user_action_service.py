@@ -2,9 +2,11 @@ from _datetime import datetime
 from pymongo import DESCENDING
 from app.models.user_action import User_Action
 from app.services.db_service import users_action
+from app.services import user_service
 from fastapi import HTTPException
 
 async def create_user_action(new_user_action:User_Action):
+    await user_service.get_user_by_id(new_user_action.user_id)
     new_user_action.id=await set_id()
     users_action.insert_one({
             "id": new_user_action.id,

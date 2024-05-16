@@ -1,3 +1,5 @@
+import json
+
 from fastapi import APIRouter, HTTPException
 from app.services import user_service
 from app.models.user import User
@@ -8,11 +10,8 @@ user_router = APIRouter()
 async def login(user: User):
     try:
         user_found = await user_service.login(user)
-        if user_found:
-            print(f" message: user id: {user_found.id} login successful")
-            return user_found
-        else:
-            raise HTTPException(status_code=401, detail="Invalid credentials")
+        print(f" message: user id: {user_found.id} login successful")
+        return user_found
     except Exception as e:
         print(f"An error occurred during login: {e}")
         raise e
@@ -23,6 +22,7 @@ async def sign_up(user: User):
     try:
         new_user = await user_service.sign_up(user)
         print (f"message: user id: {user.id} Sign-up successful")
+        print(new_user)
         return new_user
     except Exception as e:
         print(f"An error occurred during sign-up: {e}")
@@ -36,4 +36,24 @@ async def update_user_detail(user: User):
         return user
     except Exception as e:
         print(f"An error occurred during update user detail: {e}")
+        raise e
+
+# @user_router.get('/get')
+# async def get_users():
+#     try:
+#        users_list= await user_service.get_users();
+#        print(users_list)
+#        print(f"message: get all users successfully")
+#        return list
+#     except Exception as e:
+#        print(f"An error occurred during get all user action: {e}")
+#        raise e
+@user_router.get('/get/{user_id}')
+async def get_user_by_id(user_id: int):
+    try:
+        user_found = await user_service.get_user_by_id(user_id)
+        print(f" message: get user id: {user_found.id}  successfully")
+        return user_found
+    except Exception as e:
+        print(f"An error occurred during login: {e}")
         raise e
