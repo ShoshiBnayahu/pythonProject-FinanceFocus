@@ -41,4 +41,5 @@ async def set_id():
      return(max_id_document["id"]+1)
     else:
      return 0
+
     ##צריך להוסיף שליפת נתוני�

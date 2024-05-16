@@ -26,11 +26,10 @@ async def update_user_detail(updated_user:User):
         raise HTTPException(status_code=404, detail="Invalid user_id ")
     return updated_user
 
-# async def get_users():
-#     users_list=users.find()
-#     # users_list = [ User(**user) for user in list(users_list)]
-#     # print(users_list[0])
-#     return
+async def get_users():
+    users_list=users.find()
+    users_list = [ User(**user) for user in list(users_list)]
+    return users_list
 
 async def get_user_by_id(user_id:int):
     existing_user = users.find_one({"id": user_id})
