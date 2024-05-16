@@ -34,6 +34,24 @@ async def delete_user_action(user_action_id:int):
     if result.raw_result.get('n')==0:
         raise HTTPException(status_code=404, detail="Invalid user_action_id ")
 
+async def get_user_action_by_user_id(user_id:int,user_action_id:id):
+    await user_service.get_user_by_id(user_id)
+    user_action = users_action.find_one({"id": user_action_id})
+    user_action=User_Action(**user_action)
+    if not user_action or user_action.user_id!=user_id:
+        raise HTTPException(status_code=404, detail="Invalid user_action_id ")
+    return user_action
+
+async def get_user_actions_by_user_id(user_id:int):
+    await user_service.get_user_by_id(user_id)
+    user_actions_list = users_action.find({"user_id": user_id})
+    user_actions_list=[User_Action(**user_action) for user_action in list(user_actions_list)]
+    return user_actions_list
+
+async def get_users_actions():
+    users_actions_list=users_action.find()
+    users_actions_list = [ User_Action(**user_action) for user_action in list(users_actions_list)]
+    return users_actions_list
 
 async def set_id():
     max_id_document = users_action.find_one({}, sort=[("id", DESCENDING)])

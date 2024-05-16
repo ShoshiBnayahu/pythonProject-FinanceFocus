@@ -45,7 +45,7 @@ async def get_users():
        print(f"message: get all users successfully")
        return users_list
     except Exception as e:
-       print(f"An error occurred during get all user action: {e}")
+       print(f"An error occurred during get  users: {e}")
        raise e
 @user_router.get('/get/{user_id}')
 async def get_user_by_id(user_id: int):
@@ -54,5 +54,5 @@ async def get_user_by_id(user_id: int):
         print(f" message: get user id: {user_found.id}  successfully")
         return user_found
     except Exception as e:
-        print(f"An error occurred during login: {e}")
+        print(f"An error occurred during get user by id: {e}")
         raise e
