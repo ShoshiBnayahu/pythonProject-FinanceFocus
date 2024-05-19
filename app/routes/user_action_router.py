@@ -1,4 +1,6 @@
 from fastapi import APIRouter, HTTPException
+from pydantic import constr
+
 from app.services import user_action_service
 from app.models.user_action import User_Action
 
@@ -64,4 +66,24 @@ async def get_users_actions():
        print(f"An error occurred during get  users actions: {e}")
        raise e
 
- # add getters by date/month?
+
+@user_action_router.get('/get/{user_id}/{year}/{month}')
+async def get_user_actions_by_month(user_id: int, year: int, month: int):
+    try:
+        user_filtered_actions = await user_action_service.get_user_actions_by_month(user_id, year, month)
+        print(f"message: get  user actions in year: {year} and month: {month} of user id: {user_id} successfully")
+        return user_filtered_actions
+    except Exception as e:
+        print(f"An error occurred during get user actions in year: {year} and month: {month} of user id: {e}")
+        raise e
+
+@user_action_router.get('/get/{user_id}')
+async def get_user_actions_by_type(user_id: int, action_type:constr(pattern="revenue|expense")):
+    try:
+        user_filtered_actions = await user_action_service.get_user_actions_by_type(user_id, action_type)
+        print(f"message: get  user actions in type: {action_type}  of user id: {user_id} successfully")
+        print(user_filtered_actions)
+        return user_filtered_actions
+    except Exception as e:
+        print(f"An error occurred during get user actions by type :{action_type}  of user id: {e}")
+        raise e

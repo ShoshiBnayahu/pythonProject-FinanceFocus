@@ -53,6 +53,32 @@ async def get_users_actions():
     users_actions_list = [ User_Action(**user_action) for user_action in list(users_actions_list)]
     return users_actions_list
 
+async def get_user_actions_by_month(user_id: int, year: int, month: int):
+    await user_service.get_user_by_id(user_id)
+    start_date = datetime(year, month, 1, 0, 0, 0)
+    if month == 12:
+        end_date = datetime(year + 1, 1, 1, 0, 0, 0)
+    else:
+        end_date = datetime(year, month + 1, 1, 0, 0, 0)
+    user_actions_list = users_action.find({
+        "user_id": user_id,
+        "datetime": {
+            "$gte": start_date,
+            "$lte": end_date
+        }
+    })
+    user_filtered_actions = [User_Action(**user_action) for user_action in user_actions_list]
+    return user_filtered_actions
+
+async def get_user_actions_by_type(user_id: int, action_type: str):
+    await user_service.get_user_by_id(user_id)
+    user_actions_list = users_action.find({
+        "user_id": user_id,
+        "type": action_type
+    })
+    user_filtered_actions = [User_Action(**action_type) for action_type in user_actions_list]
+    return user_filtered_actions
+
 async def set_id():
     max_id_document = users_action.find_one({}, sort=[("id", DESCENDING)])
     if max_id_document:
@@ -60,4 +86,3 @@ async def set_id():
     else:
      return 0
 
-    ##צריך להוסיף שליפת נתוני�

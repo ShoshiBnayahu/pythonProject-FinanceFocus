@@ -1,5 +1,3 @@
-import json
-
 from fastapi import APIRouter, HTTPException
 from app.services import user_service
 from app.models.user import User
