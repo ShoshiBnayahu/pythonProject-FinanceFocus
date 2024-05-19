@@ -11,8 +11,6 @@ async def login(user: User):
     print(f"details: user id: {user_found.id} login successfully")
     return user_found
 
-
-
 @user_router.post('/signup')
 @logger
 async def sign_up(user: User):
