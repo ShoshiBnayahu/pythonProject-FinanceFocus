@@ -3,6 +3,7 @@ from app.models.user import User
 from app.services.db_service import users
 from fastapi import HTTPException
 
+
 async def login(user: User):
     existing_user = users.find_one({"name": user.name, "password": user.password})
     if not existing_user:
@@ -42,3 +43,6 @@ async def set_id():
     return(max_id_document["id"]+1)
    else:
     return 0
+
+
+
