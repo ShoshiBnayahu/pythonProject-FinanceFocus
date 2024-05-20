@@ -1,6 +1,7 @@
 from app.routes import user_router
 import pytest
 
+
 def test_login():
     assert  user_router.login({
       "id": 0,

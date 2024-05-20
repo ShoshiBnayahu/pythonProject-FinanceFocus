@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from pydantic import constr
 from app.services import user_action_service
 from app.models.user_action import User_Action
-from app.utils.decoratos import logger
+from utils.decoratos import logger
 
 user_action_router = APIRouter()
 @user_action_router.post('/create')
