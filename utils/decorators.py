@@ -1,16 +1,17 @@
+
+import logging
 from functools import wraps
-# from app.services import user_service
 
 def logger(func):
+    logging.basicConfig(filename='app.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     @wraps(func)
     async def wrapper(*args, **kwargs):
         try:
             result = await func(*args, **kwargs)
-            print(f"Message: {func.__name__} executed successfully")
-            print(result)
+            logging.info(f"{func.__name__} executed successfully\nresult: {result}")
             return result
         except Exception as e:
-            print(f"An error occurred during {func.__name__}: {e}")
+            logging.error(f"An error occurred during {func.__name__}: {e}")
             raise e
     return wrapper
 

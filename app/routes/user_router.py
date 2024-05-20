@@ -1,7 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from app.services import user_service
 from app.models.user import User
-from utils.decoratos import logger
+from utils.decorators import logger
 
 user_router = APIRouter()
 @user_router.post('/login')
