@@ -9,12 +9,14 @@ class User_Action(BaseModel):
      datetime:datetime
 
      @field_validator('type')
-     def check_type(cls, type):
-          if type not in ['revenue','expense']:
-               raise ValueError('error,type must to be revenue or expense')
-          return type
+     def check_type(self, type):
+         """Validates that the type is either 'revenue' or 'expense'"""
+         if type not in ['revenue','expense']:
+            raise ValueError('error,type must to be revenue or expense')
+         return type
      @field_validator('amount','user_id')
-     def check_positiveNumber(cls, num):
+     def check_positiveNumber(self, num):
+        # Ensures that the amount and user_id are positive numbers
         if num < 0:
             raise ValueError('error, negative number! ')
         return num
