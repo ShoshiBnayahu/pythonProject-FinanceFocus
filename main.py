@@ -1,6 +1,7 @@
 import uvicorn as uvicorn
 from fastapi import FastAPI
 
+
 """
 This script creates a FastAPI application and runs it using Uvicorn.
 
