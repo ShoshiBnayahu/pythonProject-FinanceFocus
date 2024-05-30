@@ -32,25 +32,28 @@ To get started with FinanceFocus:
 
 ## File Tree:
 
-The `app` directory contains the following folders:
-1. **models**: Defines the models of the application in 2 files: `user` and `user_action`.
-2. **routes**: Defines the routes of the application:
-   - `user_router`: Routes for users: registration, login, profile update, and fetching user objects.
-   - `user_action_router`: Routes for user actions: creation, update, deletion, and fetching data of user actions.
-   - `visual_router`: Route for visualization: Option to retrieve data in a format suitable for visualization using matplotlib.
-3. **services**: Defines functions and files:
-   - `Db_service`: This script initializes a connection to the MongoDB server and accesses specific collections within the database.
-   - `User_service`: Provides functions for managing users and access to the database for `user_router`.
-   - `User_action_service`: Provides functions for managing user actions and access to the database for `user_action_router`.
-   - `Visual_service`: Provides functions for visual_router.
+├── app
+│   ├── models
+│   │   ├── user.py                      # Defines the models of the application for users.
+│   │   └── user_action.py               # Defines the models of the application for user actions.
+│   ├── routes
+│   │   ├── user_router.py               # Routes for users: registration, login, profile update, and fetching user objects.
+│   │   ├── user_action_router.py        # Routes for user actions: creation, update, deletion, and fetching data of user actions.
+│   │   └── visual_router.py             # Route for visualization: Option to retrieve data in a format suitable for visualization using matplotlib.
+│   └── services
+│       ├── Db_service.py                # Initializes a connection to the MongoDB server and accesses specific collections within the database.
+│       ├── User_service.py              # Provides functions for managing users and access to the database for user_router.
+│       ├── User_action_service.py       # Provides functions for managing user actions and access to the database for user_action_router.
+│       └── Visual_service.py            # Provides functions for visual_router.
+├── tests
+│   ├── user_test.py                     # Defines unit tests for functions related to users in the application.
+│   └── user_action_test.py              # Defines unit tests for functions related to user actions in the application.
+├── utils
+│   └── decorators.py                    # Defines a decorator for registration function.
+├── main.py                              # Includes routes for various functions and is run using Uvicorn on localhost.
+├── README.md
+└── requirements.txt
 
-The `utils` directory contains a `decorators` file that defines a decorator for registration function.
-
-The `main.py` file includes routes for various functions and is run using Uvicorn on localhost.
-
-The `tests` directory contains files for tests:
-1. **user_test**: Defines unit tests for functions related to users in the application.
-2. **user_action_test**: Defines unit tests for functions related to user actions in the application.
 
 ## Feedback:
 
