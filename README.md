@@ -32,28 +32,27 @@ To get started with FinanceFocus:
 
 ## File Tree:
 
-├── app
-│   ├── models
-│   │   ├── user.py                      # Defines the models of the application for users.
-│   │   └── user_action.py               # Defines the models of the application for user actions.
-│   ├── routes
-│   │   ├── user_router.py               # Routes for users: registration, login, profile update, and fetching user objects.
-│   │   ├── user_action_router.py        # Routes for user actions: creation, update, deletion, and fetching data of user actions.
-│   │   └── visual_router.py             # Route for visualization: Option to retrieve data in a format suitable for visualization using matplotlib.
-│   └── services
-│       ├── Db_service.py                # Initializes a connection to the MongoDB server and accesses specific collections within the database.
-│       ├── User_service.py              # Provides functions for managing users and access to the database for user_router.
-│       ├── User_action_service.py       # Provides functions for managing user actions and access to the database for user_action_router.
-│       └── Visual_service.py            # Provides functions for visual_router.
-├── tests
-│   ├── user_test.py                     # Defines unit tests for functions related to users in the application.
-│   └── user_action_test.py              # Defines unit tests for functions related to user actions in the application.
-├── utils
-│   └── decorators.py                    # Defines a decorator for registration function.
-├── main.py                              # Includes routes for various functions and is run using Uvicorn on localhost.
-├── README.md
-└── requirements.txt
-
+      ├── app
+      │   ├── models
+      │   │   ├── user.py                      # Defines the models of the application for users.
+      │   │   └── user_action.py               # Defines the models of the application for user actions.
+      │   ├── routes
+      │   │   ├── user_router.py               # Routes for users: registration, login, profile update, and fetching user objects.
+      │   │   ├── user_action_router.py        # Routes for user actions: creation, update, deletion, and fetching data of user actions.
+      │   │   └── visual_router.py             # Route for visualization: Option to retrieve data in a format suitable for visualization using matplotlib.
+      │   └── services
+      │       ├── Db_service.py                # Initializes a connection to the MongoDB server and accesses specific collections within the database.
+      │       ├── User_service.py              # Provides functions for managing users and access to the database for user_router.
+      │       ├── User_action_service.py       # Provides functions for managing user actions and access to the database for user_action_router.
+      │       └── Visual_service.py            # Provides functions for visual_router.
+      ├── tests
+      │   ├── user_test.py                     # Defines unit tests for functions related to users in the application.
+      │   └── user_action_test.py              # Defines unit tests for functions related to user actions in the application.
+      ├── utils
+      │   └── decorators.py                    # Defines a decorator for registration function.
+      ├── main.py                              # Includes routes for various functions and is run using Uvicorn on localhost.
+      ├── README.md
+      └── requirements.txt
 
 ## Feedback:
 
