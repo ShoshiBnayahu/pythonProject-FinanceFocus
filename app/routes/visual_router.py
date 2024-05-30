@@ -17,6 +17,6 @@ async def get_user_graph(user_id: int, year: int):
 @logger
 async def get_user_monthly_by_type(user_id: int, action_type: constr(pattern="revenue|expense")):
     """Generates and shows a graph of monthly revenues or expenses for a user."""
-    months, monthly_revenues = await visual_service.get_user_monthly_by_type(user_id, action_type)
-    visual_service.create_plot(months, monthly_revenues)
+    months, monthly_amounts = await visual_service.get_user_monthly_by_type(user_id, action_type)
+    visual_service.create_plot(months, monthly_amounts)
     return "User graph shown"
